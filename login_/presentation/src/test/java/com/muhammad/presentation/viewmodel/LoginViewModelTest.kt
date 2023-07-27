@@ -91,13 +91,13 @@ class LoginViewModelTest {
     @Test
     fun `onEvent AddEmail updates Email`() = runTest {
         viewModel.onEvent(LoginEvent.EnterEmail("muhammad@gmail.com"))
-        assert(viewModel.state.email == "muhammad@gmail.com")
+        assert(viewModel.state.userNameOremail == "muhammad@gmail.com")
     }
 
     @Test
     fun `onEvent AddEmailOrUserName updates emailOrUserName`() = runTest {
         viewModel.onEvent(LoginEvent.EnterEmail("mor_2314"))
-        assert(viewModel.state.email == "mor_2314")
+        assert(viewModel.state.userNameOremail == "mor_2314")
     }
 
 

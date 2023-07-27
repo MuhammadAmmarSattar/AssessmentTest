@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -53,9 +54,10 @@ fun LoginScreen(
         }
     }
     if (res.error.isNotBlank()) {
-        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-            Text(text = res.error)
-        }
+        Toast.makeText(context,res.error,Toast.LENGTH_LONG).show()
+//        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+//            Text(text = res.error)
+//        }
     }
 
 
@@ -100,7 +102,7 @@ fun LoginScreen(
             ) {
                 Spacer(modifier = Modifier.height(20.dp))
                 InputField(
-                    text = state.email,
+                    text = state.userNameOremail,
                     valueState = { viewModel.onEvent(LoginEvent.EnterEmail(it)) },
                     labelId = "Email",
                     enable = true,
@@ -117,7 +119,7 @@ fun LoginScreen(
                 InputField(
                     text = state.password,
                     valueState = { viewModel.onEvent(LoginEvent.EnterPassword(it)) },
-                    labelId = "Password",
+                    labelId = stringResource(R.string.password),
                     enable = true,
                     error = false,
                     isSingleLine = true,

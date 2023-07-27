@@ -2,14 +2,14 @@ package com.core.network.model
 
 
 
-data class LoginResponse(
+data class LoginResponseMock(
 //    val token : String,
 //    val error : String ? =null
 val user : User
 )
 {
     companion object{
-        fun mock() = LoginResponse(user = User(
+        fun mock() = LoginResponseMock(user = User(
             id = "59201123412",
             name = "Muhammad",
             profilePicture = "https://www.profile.com",

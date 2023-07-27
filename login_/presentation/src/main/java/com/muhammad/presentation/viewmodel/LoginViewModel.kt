@@ -37,7 +37,7 @@ class LoginViewModel @Inject constructor(
     fun onEvent(event: LoginEvent) {
         when (event) {
             is LoginEvent.EnterEmail -> {
-                state = state.copy(email = event.email)
+                state = state.copy(userNameOremail = event.email)
             }
 
             is LoginEvent.EnterPassword -> {
@@ -45,7 +45,7 @@ class LoginViewModel @Inject constructor(
             }
 
             is LoginEvent.Login -> {
-                val userNameResult = validateUserName.execute(state.email)
+                val userNameResult = validateUserName.execute(state.userNameOremail)
                 val passwordResult = validatePassword.execute(state.password)
 
                 val hasError = listOf(
@@ -66,8 +66,8 @@ class LoginViewModel @Inject constructor(
                     loginUseCase.invoke(
                         loginRequest =
                         LoginRequest(
-                            username = "mor_2314",
-                            password = "83r5^_",
+                            username = state.userNameOremail,
+                            password = state.password,
                         )
                     ).onEach {
                         when (it) {
@@ -81,7 +81,7 @@ class LoginViewModel @Inject constructor(
 
                             is Resource.Success -> {
 
-                                it.data?.token.let {
+                                  it.data?.token.let {
                                     _signUpState.value = LoginState(token = it)
                                 }
                             }
