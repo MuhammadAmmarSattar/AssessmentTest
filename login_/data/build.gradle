@@ -1,0 +1,59 @@
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.muhammad.data'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+
+    // AndroidX Component
+    implementation AndroidX.coreKtx
+    implementation AndroidX.lifecycleRuntimeKtx
+    implementation AndroidX.appCompat
+    // Android Compose
+//    implementation Compose.activityCompose
+//    implementation Compose.ui
+//    implementation Compose.uiToolingPreview
+//    implementation Compose.material
+//    implementation Compose.viewModelCompose
+//    implementation Compose.navigation
+    // Common libraries
+    implementation(project(":core:network"))
+    implementation project(path: ':login_:domain')
+    // Dagger Hilt
+    kapt DaggerHilt.hiltCompiler
+    implementation DaggerHilt.hiltAndroid
+    implementation DaggerHilt.hiltNavigationCompose
+    // Retrofit
+    implementation(Retrofit.okHttp)
+    implementation(Retrofit.retrofit)
+    implementation(Retrofit.okHttpLoggingInterceptor)
+}

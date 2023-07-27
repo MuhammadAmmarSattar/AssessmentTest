@@ -1,0 +1,106 @@
+plugins {
+    id("com.android.library")
+    id("org.jetbrains.kotlin.android")
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.muhammad.presentation'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+}
+
+dependencies {
+
+    implementation(project(":core:core_ui"))
+    implementation(project(":core:network"))
+    implementation project(path: ':login_:data')
+    implementation project(path: ':login_:domain')
+    // AndroidX Component
+    implementation AndroidX.coreKtx
+    implementation AndroidX.lifecycleRuntimeKtx
+    implementation AndroidX.androidViewModel
+    implementation AndroidX.androidViewModelKtx
+    implementation AndroidX.appCompat
+    // Android Compose
+    implementation Compose.activityCompose
+    implementation Compose.ui
+    implementation Compose.uiToolingPreview
+    implementation Compose.material
+    implementation Compose.viewModelCompose
+    implementation Compose.navigation
+    // Common libraries
+    implementation Common.coilCompose
+    // Dagger Hilt
+    kapt DaggerHilt.hiltCompiler
+    implementation DaggerHilt.hiltAndroid
+    implementation DaggerHilt.hiltNavigationCompose
+    // Retrofit
+    implementation(Retrofit.okHttp)
+    implementation(Retrofit.retrofit)
+    implementation(Retrofit.okHttpLoggingInterceptor)
+    // Testing
+    testImplementation Testing.junit4
+    testImplementation Testing.junitAndroidExt
+    testImplementation Testing.truth
+    testImplementation Testing.coroutines
+    testImplementation Testing.turbine
+    testImplementation Testing.composeUiTest
+    testImplementation Testing.mockk
+    androidTestImplementation Testing.hiltTesting
+    androidTestImplementation Testing.espresso
+//    implementation "androidx.compose.material:material-icons-extended:$compose_ui_version"
+
+    implementation "androidx.navigation:navigation-compose:2.5.1"
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    implementation "io.coil-kt:coil-compose:2.2.2"
+    implementation 'com.google.accompanist:accompanist-permissions:0.31.2-alpha'
+    testImplementation Testing.junit4
+    testImplementation Testing.junitAndroidExt
+    testImplementation Testing.truth
+    testImplementation Testing.mockk
+    testImplementation 'org.mockito:mockito-core:2.18.3'
+    api "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    api "org.mockito:mockito-inline:4.0.0"
+
+    //turbine
+    testImplementation 'app.cash.turbine:turbine:0.12.1'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+
+
+    api "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    api "org.mockito:mockito-inline:4.0.0"
+    api "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+
+
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0"
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.30.1"
+}

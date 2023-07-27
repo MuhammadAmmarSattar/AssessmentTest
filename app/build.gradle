@@ -1,0 +1,82 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.muhammad.assessmenttest'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.muhammad.assessmenttest"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        vectorDrawables {
+            useSupportLibrary true
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    buildFeatures {
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion '1.3.2'
+    }
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+}
+
+dependencies {
+
+    implementation platform('androidx.compose:compose-bom:2022.10.00')
+    implementation 'androidx.compose.material3:material3'
+    implementation(project(":core:network"))
+    implementation(project(":login_:presentation"))
+    implementation(project(":product:presentation"))
+
+    // AndroidX Component
+    implementation AndroidX.coreKtx
+    implementation AndroidX.lifecycleRuntimeKtx
+    implementation AndroidX.androidViewModel
+    implementation AndroidX.androidViewModelKtx
+    implementation AndroidX.appCompat
+    // Android Compose
+    implementation Compose.activityCompose
+    implementation Compose.ui
+    implementation Compose.uiToolingPreview
+    implementation Compose.material
+    implementation Compose.viewModelCompose
+    implementation Compose.navigation
+
+    kapt DaggerHilt.hiltCompiler
+    implementation DaggerHilt.hiltAndroid
+    implementation DaggerHilt.hiltNavigationCompose
+    implementation 'com.google.accompanist:accompanist-permissions:0.23.1'
+
+    implementation "androidx.navigation:navigation-compose:2.5.1"
+    implementation "io.coil-kt:coil-compose:2.2.2"
+    implementation 'androidx.core:core-splashscreen:1.0.0'
+    implementation "com.google.accompanist:accompanist-systemuicontroller:0.30.1"
+}

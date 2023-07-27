@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.MyApp" parent="Theme.SplashScreen">
+
+        <item name="windowSplashScreenBackground">@color/teal_200</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_inset</item>
+        <item name="windowSplashScreenAnimationDuration">1000</item>
+        <item name="postSplashScreenTheme">@style/Theme.SplashAPI</item>
+<!--        <dimen name="splashscreen_icon_mask_size_with_background">480dp</dimen>-->
+<!--        <dimen name="splashscreen_icon_size_with_background">308dp</dimen>-->
+
+        <!--        <item name="android:windowSplashScreenBrandingImage">@drawable/ic_launcher_background</item>-->
+
+    </style>
+
+
+    <style name="Theme.SplashAPI" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/purple_700</item>
+    </style>
+</resources>

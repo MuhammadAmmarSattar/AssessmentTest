@@ -1,0 +1,28 @@
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "AssessmentTest"
+include ':app'
+include ':login:data'
+include ':login:domain'
+include ':login:presentation'
+include ':product:data'
+include ':product:data'
+include ':product:domain'
+include ':product:presentation'
+include ':core:core_ui'
+include ':core:network'
+include ':login_:data'
+include ':login_:domain'
+include ':login_:presentation'
